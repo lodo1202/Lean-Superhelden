@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Lean Superhelden </title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+    }
+
+    .flipcard {
+      width: 240px;
+      height: 340px;
+      perspective: 1000px;
+    }
+
+    .flipcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .flipcard.flipped .flipcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flipcard-front, .flipcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .flipcard-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flipcard-back {
+      background-color: #ffffff;
+      color: #333;
+      transform: rotateY(180deg);
+      padding: 16px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .flipcard-back p {
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .flipcard {
+        width: 45%;
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flipcard {
+        width: 100%;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-container">
+
+  <!-- Valo -->
+  <div class="flipcard" onclick="this.classList.toggle('flipped')">
+    <div class="flipcard-inner">
+      <div class="flipcard-front">
+        <img src="Valo Poster.png" alt="Valo">
+      </div>
+      <div class="flipcard-back">
+        <p><strong>Valo</strong> wiederspiegelt das Lean-Prinzip „Wert definieren“.<br>
+        Er erkennt, was wirklich Wert für den Kunden schafft.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Streamo -->
+  <div class="flipcard" onclick="this.classList.toggle('flipped')">
+    <div class="flipcard-inner">
+      <div class="flipcard-front">
+        <img src="Streamo Poster.png" alt="Streamo">
+      </div>
+      <div class="flipcard-back">
+        <p><strong>Streamo</strong> verkörpert das Lean-Prinzip „Wertstrom analysieren“.<br>
+        Er macht sichtbar, wie der Wert durch den gesamten Prozess fließt.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flowa -->
+  <div class="flipcard" onclick="this.classList.toggle('flipped')">
+    <div class="flipcard-inner">
+      <div class="flipcard-front">
+        <img src="Flowa Poster.png" alt="Flowa">
+      </div>
+      <div class="flipcard-back">
+        <p><strong>Flowa</strong> steht für das Lean-Prinzip „Fluss erzeugen“.<br>
+        Sie sorgt dafür, dass Arbeit reibungslos und ohne Unterbrechung voranschreitet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pulla -->
+  <div class="flipcard" onclick="this.classList.toggle('flipped')">
+    <div class="flipcard-inner">
+      <div class="flipcard-front">
+        <img src="Pulla Poster.png" alt="Pulla">
+      </div>
+      <div class="flipcard-back">
+        <p><strong>Pulla</strong> repräsentiert das Lean-Prinzip „Pull statt Push“.<br>
+        Sie stellt sicher, dass nur dann produziert wird, wenn echte Nachfrage besteht.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perfa -->
+  <div class="flipcard" onclick="this.classList.toggle('flipped')">
+    <div class="flipcard-inner">
+      <div class="flipcard-front">
+	<img src="Perfa Poster.png" alt="Perfa">
+	</div>
+	<div class="flipcard-back">
+        <p><strong>Perfa</strong> repräsentiert das Lean-Prinzip „Streben nach Perfektion“.<br>
+        Sie sorgt für kontinuierliche Verbesserung und nachhaltige Veränderung.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
