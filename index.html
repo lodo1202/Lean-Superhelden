@@ -8,27 +8,27 @@
       font-family: sans-serif;
       background: #f9f9f9;
       margin: 0;
-      padding: 40px 20px;
+      padding: 40px 0;
       text-align: center;
     }
 
     h1 {
       font-size: 1.8em;
-      margin-bottom: 0.2em;
+      margin-bottom: 0.3em;
     }
 
     p.intro {
-      max-width: 700px;
-      margin: 0 auto 40px;
       font-size: 1em;
-      line-height: 1.5;
+      line-height: 1.4;
+      max-width: 720px;
+      margin: 0 auto 40px;
     }
 
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 24px;
+      gap: 20px;
       max-width: 1800px;
       margin: 0 auto;
     }
@@ -37,15 +37,16 @@
       width: 324px;
       height: 486px;
       perspective: 1000px;
+      position: relative;
+      flex: 0 0 auto;
     }
 
     .flipcard-inner {
-      position: relative;
       width: 100%;
       height: 100%;
+      position: relative;
       transition: transform 0.6s;
       transform-style: preserve-3d;
-      cursor: pointer;
     }
 
     .flipcard.flipped .flipcard-inner {
@@ -53,9 +54,11 @@
     }
 
     .flipcard-front, .flipcard-back {
+      width: 324px;
+      height: 486px;
       position: absolute;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      left: 0;
       backface-visibility: hidden;
       border-radius: 16px;
       overflow: hidden;
@@ -63,22 +66,21 @@
     }
 
     .flipcard-front img {
-      width: 100%;
-      height: 100%;
+      width: 324px;
+      height: 486px;
       object-fit: cover;
       display: block;
     }
 
     .flipcard-back {
-      background-color: #ffffff;
-      color: #333;
+      background-color: #fff;
       transform: rotateY(180deg);
-      padding: 20px;
-      box-sizing: border-box;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      padding: 20px;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .flipcard-back p {
@@ -86,25 +88,11 @@
       line-height: 1.5;
       margin: 0;
     }
-
-    @media (max-width: 768px) {
-      .flipcard {
-        width: 45%;
-        height: auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .flipcard {
-        width: 100%;
-        height: auto;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <h2>Wer steht für welches Prinzip?</h2>
+  <h1>Wer steht für welches Prinzip?</h1>
   <p class="intro">
     <strong>Klicke auf die Karten, um sie umzudrehen</strong> und herauszufinden, welches Prinzip sie verkörpern – und welche Aufgabe sie im Lean-Universum übernehmen.
   </p>
@@ -130,7 +118,7 @@
           <img src="Streamo Poster.png" alt="Streamo">
         </div>
         <div class="flipcard-back">
-          <p><strong>Streamo</strong> verkörpert das Lean-Prinzip „Wertstrom analysieren“. Er macht sichtbar, wie der Wert durch den gesamten Prozess fliesst.</p>
+          <p><strong>Streamo</strong> verkörpert das Lean-Prinzip „Wertstrom analysieren“. Er macht sichtbar, wie der Wert durch den gesamten Prozess fließt.</p>
         </div>
       </div>
     </div>
