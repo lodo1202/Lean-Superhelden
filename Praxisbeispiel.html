@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Kanban in der Kundenberatung</title>
+  <style>
+    body {
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .kanban-box {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      max-width: 800px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .kanban-box h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .kanban-box p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      text-align: left;
+    }
+    td strong {
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="kanban-box">
+    <h3>„Kanban in der Kundenberatung“ – Beispiel ZKB:</h3>
+    <p>„In dem Kreditkomitee bezüglich Hypotheken der ZKB wurde ein Kanban-Board eingeführt. Früher wurden die Anfragen der Kundenberater per E-Mail und Excel verwaltet – oft unübersichtlich, Rückfragen, lange Durchlaufzeiten.</p>
+
+    <table>
+      <tr>
+        <th>Spalte im Kanban</th>
+        <th>Lean-Prinzip & Nutzen</th>
+      </tr>
+      <tr>
+        <td><strong>Backlog (Anfragen eingegangen)</strong></td>
+        <td><strong>Pull:</strong> Hier warten neue Anfragen → gezogen, wenn Kapazität frei</td>
+      </tr>
+      <tr>
+        <td><strong>In Bearbeitung</strong></td>
+        <td><strong>Flow:</strong> Hier ist der aktive Arbeitsfluss → Bewegung sichtbar</td>
+      </tr>
+      <tr>
+        <td><strong>Warten auf Kundenberater / Dritte</strong></td>
+        <td><strong>Visualisierung von Wartezeiten:</strong> → potenzielle Verschwendung (Muda) erkennbar</td>
+      </tr>
+      <tr>
+        <td><strong>Zur Freigabe</strong></td>
+        <td><strong>Flow + Transparenz:</strong> → nächste Stufe klar definiert</td>
+      </tr>
+      <tr>
+        <td><strong>Abgeschlossen</strong></td>
+        <td><strong>Erfolg sichtbar machen:</strong> → kontinuierlicher Fluss abgeschlossen</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
