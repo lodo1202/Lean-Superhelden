@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verschwendung oder Optimierung?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      max-width: 800px;
+      text-align: left;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .column {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      width: 280px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .column h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .item {
+      background-color: #e0e0e0;
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: grab;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .correct {
+      background-color: #c8f7c5 !important;
+    }
+    .incorrect {
+      background-color: #f7c5c5 !important;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons button {
+      margin: 0 10px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background-color: #0056b3;
+    }
+    #score {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    Was davon könnte nach dem Lean-Ansatz eine Verschwendungsart (Muda) sein?<br>
+    Ziehe die Aussagen in die passende Kategorie. Du kannst sie auch zurückziehen oder zwischen den Spalten verschieben.
+  </h2>
+
+  <div class="container">
+    <div class="column" id="aussagen">
+      <h3>Aussagen</h3>
+    </div>
+    <div class="column" id="verschwendung">
+      <h3>Verschwendung</h3>
+    </div>
+    <div class="column" id="optimierung">
+      <h3>Optimierung</h3>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="checkAnswers()">Antwort prüfen</button>
+    <button onclick="showCorrect()">Korrekte Antwort anzeigen</button>
+    <button onclick="showMyAnswer()">Meine Antwort</button>
+    <button onclick="resetQuiz()">Nochmal lösen</button>
+  </div>
+
+  <div id="score"></div>
+
+  <script>
+    const statements = [
+      { text: "Wartezeiten im Prozess", correct: "verschwendung" },
+      { text: "Zu viele Produkte auf Lager halten", correct: "verschwendung" },
+      { text: "Produktion von mehr Einheiten als benötigt", correct: "verschwendung" },
+      { text: "Produkte werden unnötig geprüft", correct: "verschwendung" },
+      { text: "Häufiges Suchen nach Werkzeugen", correct: "verschwendung" },
+      { text: "Fehler, die nachträglich korrigiert werden müssen", correct: "verschwendung" },
+      { text: "Transport von Dokumenten zwischen Abteilungen", correct: "verschwendung" },
+      { text: "Mitarbeitende lernen neue Fähigkeiten", correct: "optimierung" },
+      { text: "Automatisierung von Routineaufgaben", correct: "optimierung" },
+      { text: "Kundengespräch zur Bedarfsermittlung", correct: "optimierung" },
+    ];
+
+    let userAnswer = {};
+    let isChecked = false;
+
+    const container = document.getElementById("aussagen");
+    const verschwendungCol = document.getElementById("verschwendung");
+    const optimierungCol = document.getElementById("optimierung");
+
+    function createDraggableItem(text) {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.textContent = text;
+      div.draggable = true;
+      div.addEventListener("dragstart", dragStart);
+      div.addEventListener("click", () => {
+        if (!isChecked) container.appendChild(div);
+      });
+      return div;
+    }
+
+    function dragStart(e) {
+      e.dataTransfer.setData("text/plain", e.target.textContent);
+    }
+
+    [container, verschwendungCol, optimierungCol].forEach(col => {
+      col.addEventListener("dragover", e => e.preventDefault());
+      col.addEventListener("drop", e => {
+        if (isChecked) return;
+        e.preventDefault();
+        const data = e.dataTransfer.getData("text/plain");
+        const item = [...document.querySelectorAll('.item')].find(el => el.textContent === data);
+        if (item && ![...col.querySelectorAll('.item')].some(el => el.textContent === data)) {
+          col.appendChild(item);
+        }
+      });
+    });
+
+    function loadItems() {
+      container.innerHTML = "<h3>Aussagen</h3>";
+      [verschwendungCol, optimierungCol].forEach(col => col.innerHTML = `<h3>${col.id.charAt(0).toUpperCase() + col.id.slice(1)}</h3>`);
+      statements.forEach(s => {
+        const item = createDraggableItem(s.text);
+        container.appendChild(item);
+      });
+      userAnswer = {};
+      isChecked = false;
+      document.getElementById("score").textContent = "";
+    }
+
+    function checkAnswers() {
+      if (isChecked) return;
+      userAnswer = {};
+      document.querySelectorAll('.item').forEach(item => {
+        const parentId = item.parentElement.id;
+        const correct = statements.find(s => s.text === item.textContent)?.correct;
+        userAnswer[item.textContent] = parentId;
+        if (parentId === correct) {
+          item.classList.add("correct");
+          item.classList.remove("incorrect");
+        } else {
+          item.classList.add("incorrect");
+          item.classList.remove("correct");
+        }
+      });
+      const total = statements.length;
+      const correct = Object.entries(userAnswer).filter(([text, val]) => {
+        const match = statements.find(s => s.text === text);
+        return match && match.correct === val;
+      }).length;
+      document.getElementById("score").textContent = `${correct} von ${total} richtig (${Math.round(correct / total * 100)}%)`;
+      isChecked = true;
+    }
+
+    function showCorrect() {
+      if (!isChecked) return;
+      container.innerHTML = "<h3>Aussagen</h3>";
+      [verschwendungCol, optimierungCol].forEach(col => col.innerHTML = `<h3>${col.id.charAt(0).toUpperCase() + col.id.slice(1)}</h3>`);
+      statements.forEach(s => {
+        const item = createDraggableItem(s.text);
+        item.classList.add("correct");
+        document.getElementById(s.correct).appendChild(item);
+      });
+    }
+
+    function showMyAnswer() {
+      if (!isChecked) return;
+      container.innerHTML = "<h3>Aussagen</h3>";
+      [verschwendungCol, optimierungCol].forEach(col => col.innerHTML = `<h3>${col.id.charAt(0).toUpperCase() + col.id.slice(1)}</h3>`);
+      Object.entries(userAnswer).forEach(([text, cat]) => {
+        const item = createDraggableItem(text);
+        const correct = statements.find(s => s.text === text)?.correct;
+        item.classList.add(correct === cat ? "correct" : "incorrect");
+        document.getElementById(cat).appendChild(item);
+      });
+    }
+
+    function resetQuiz() {
+      loadItems();
+    }
+
+    loadItems();
+  </script>
+</body>
+</html>
