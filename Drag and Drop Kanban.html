@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag & Drop: Kanban richtig anwenden</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      font-weight: normal;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .instruction {
+      max-width: 700px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .column {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      min-height: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .column h3 {
+      font-weight: normal;
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .item {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 8px 0;
+      cursor: move;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .item.correct {
+      background-color: #e9fce9;
+      border-color: #4CAF50;
+    }
+    .item.incorrect {
+      background-color: #fdecea;
+      border-color: #e53935;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .score {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Was davon zeigt korrektes Kanban-Verhalten – und was nicht?</h2>
+  <div class="instruction">
+    Ziehe die Aussagen in die passende Spalte: "Richtiges Kanban" oder "Fehler". Danach kannst du deine Antwort prüfen.
+  </div>
+
+  <div class="container">
+    <div class="column" id="options">
+      <h3>Aussagen</h3>
+      <div class="item" draggable="true" data-correct="true">WIP-Limit pro Spalte einhalten</div>
+      <div class="item" draggable="true" data-correct="true">Tägliche Team-Checks am Board</div>
+      <div class="item" draggable="true" data-correct="false">Alle Aufgaben auf einmal starten</div>
+      <div class="item" draggable="true" data-correct="false">Board nur alle zwei Wochen aktualisieren</div>
+      <div class="item" draggable="true" data-correct="true">Karten immer von links nach rechts bewegen</div>
+      <div class="item" draggable="true" data-correct="false">Jeder nutzt ein eigenes, geheimes Board</div>
+    </div>
+
+    <div class="column" id="correct">
+      <h3>Richtiges Kanban</h3>
+    </div>
+
+    <div class="column" id="incorrect">
+      <h3>Fehler</h3>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="checkAnswers()">Antwort prüfen</button>
+    <button onclick="showCorrect()">Korrekte Antwort</button>
+    <button onclick="showMyAnswer()">Meine Antwort</button>
+    <button onclick="resetAll()">Nochmal lösen</button>
+  </div>
+
+  <div class="score" id="score"></div>
+
+  <script>
+    const items = document.querySelectorAll('.item');
+    let savedAnswers = {};
+
+    items.forEach(item => {
+      item.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', item.textContent);
+      });
+    });
+
+    const columns = document.querySelectorAll('.column');
+    columns.forEach(col => {
+      col.addEventListener('dragover', e => e.preventDefault());
+      col.addEventListener('drop', e => {
+        e.preventDefault();
+        const data = e.dataTransfer.getData('text/plain');
+        const dragged = Array.from(document.querySelectorAll('.item')).find(el => el.textContent === data);
+        if (!Array.from(col.children).includes(dragged)) col.appendChild(dragged);
+      });
+    });
+
+    function checkAnswers() {
+      let correctCount = 0;
+      let total = 0;
+      document.querySelectorAll('.item').forEach(item => {
+        const parentId = item.parentElement.id;
+        const isCorrect = item.dataset.correct === "true";
+        const belongsTo = isCorrect ? 'correct' : 'incorrect';
+        total++;
+        if (parentId === belongsTo) {
+          item.classList.add('correct');
+          correctCount++;
+        } else {
+          item.classList.add('incorrect');
+        }
+        savedAnswers[item.textContent] = parentId;
+      });
+      const percent = Math.round((correctCount / total) * 100);
+      document.getElementById('score').textContent = `Du hast ${correctCount} von ${total} richtig zugeordnet (${percent}%)`;
+    }
+
+    function showCorrect() {
+      document.querySelectorAll('.item').forEach(item => {
+        const isCorrect = item.dataset.correct === "true";
+        document.getElementById(isCorrect ? 'correct' : 'incorrect').appendChild(item);
+        item.classList.remove('incorrect');
+        item.classList.add('correct');
+      });
+    }
+
+    function showMyAnswer() {
+      document.querySelectorAll('.item').forEach(item => {
+        const container = document.getElementById(savedAnswers[item.textContent]);
+        if (container) container.appendChild(item);
+        item.classList.remove('correct', 'incorrect');
+        const isCorrect = item.dataset.correct === "true";
+        if ((savedAnswers[item.textContent] === 'correct' && isCorrect) || (savedAnswers[item.textContent] === 'incorrect' && !isCorrect)) {
+          item.classList.add('correct');
+        } else {
+          item.classList.add('incorrect');
+        }
+      });
+    }
+
+    function resetAll() {
+      const start = document.getElementById('options');
+      document.getElementById('score').textContent = '';
+      document.querySelectorAll('.item').forEach(item => {
+        start.appendChild(item);
+        item.classList.remove('correct', 'incorrect');
+      });
+      savedAnswers = {};
+    }
+  </script>
+</body>
+</html>
