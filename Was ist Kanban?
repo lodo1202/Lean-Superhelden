@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanban Theorie</title>
+  <style>
+    body {
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      background: #fff;
+      margin: 40px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .kanban-img {
+      width: 360px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .text-block {
+      flex: 1;
+      background: #f9f9f9;
+      padding: 24px 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .kanban-img {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="Kanban%20Theorie.png" alt="Kanban Theorie" class="kanban-img" />
+    
+    <div class="text-block">
+      <p><strong>Kanban</strong> ist eine Methode des agilen Projektmanagements, die Teams hilft, ihre anstehenden Aufgaben mit den verfügbaren Kapazitäten in Einklang zu bringen. Das wichtigste Element dabei ist ein <strong>Kanban-Board</strong>, das in verschiedene Phasen unterteilt ist – darauf werden alle Aufgaben als Karten festgehalten und wandern im Laufe der Bearbeitung von Phase zu Phase, bis sie schliesslich erledigt sind.</p>
+
+      <p>Der Begriff <strong>Kanban</strong> stammt aus dem Japanischen und bedeutet so viel wie „Karte“ oder „Tafel“ – ein Hinweis darauf, dass die Methode Arbeit mit Karten auf Tafeln visualisiert.</p>
+
+      <p>Kanban wurde ursprünglich 1947 vom Toyota-Ingenieur <strong>Taiichi Ōno</strong> entwickelt. Ziel war es, das Produktionssystem effizienter zu gestalten, indem man die Produktion direkt an der tatsächlichen Nachfrage ausrichtete statt an Prognosen (<em>Just-in-Time-Prinzip</em>).</p>
+
+      <p>Was als Lean-Management-Technik in der Automobilproduktion begann, hat sich längst in viele andere Bereiche ausgedehnt. Heute wird Kanban als <strong>agile Methode</strong> in der Wissensarbeit eingesetzt – besonders beliebt ist es zum Beispiel in der Software- und Produktentwicklung, aber auch in der allgemeinen Unternehmensorganisation oder sogar im persönlichen Zeitmanagement.</p>
+
+      <p><strong>Kurz gesagt:</strong> Immer wenn viele Aufgaben koordiniert werden müssen, kann Kanban helfen, das Chaos zu bändigen.</p>
+    </div>
+  </div>
+
+</body>
+</html>
