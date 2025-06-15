@@ -7,19 +7,25 @@
   <style>
     body {
       font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-      background: #fff;
+      background: #f7f7f7;
       margin: 40px;
       color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .section {
+    .card {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 24px;
       max-width: 1000px;
-      margin-bottom: 40px;
+      width: 100%;
+      margin-bottom: 32px;
       gap: 24px;
     }
     .text {
@@ -30,18 +36,27 @@
     .text strong {
       display: block;
       font-weight: bold;
+      font-size: 18px;
       margin-bottom: 12px;
     }
+    .text ul {
+      padding-left: 20px;
+      margin-top: 12px;
+    }
+    .text ul li {
+      margin-bottom: 8px;
+    }
     .image {
-      width: 320px;
+      width: 300px;
       flex-shrink: 0;
-      border-radius: 12px;
+      border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 <body>
-  <div class="section">
+
+  <div class="card">
     <div class="text">
       <strong>Flow (Fluss)</strong>
       <p>Lean Management strebt nach einem kontinuierlichen Fluss der Arbeit – ohne unnötige Wartezeiten oder Staus. Das Kanban-Board zeigt diesen Flow direkt: Aufgaben bewegen sich von links nach rechts → der Fortschritt ist jederzeit sichtbar. Wenn Aufgaben stocken (z. B. in „Warten auf Kunde“), erkennt das Team sofort Engpässe und kann gegensteuern.</p>
@@ -49,7 +64,7 @@
     <img src="Flowa in action.png" alt="Flowa" class="image">
   </div>
 
-  <div class="section">
+  <div class="card">
     <div class="text">
       <strong>Pull-Prinzip</strong>
       <p>Beim Pull-Prinzip wird Arbeit gezogen, wenn Kapazität vorhanden ist – statt Arbeit ungeplant ‚hineinzuschieben‘. Im Kanban-Board bedeutet das: Ein Berater oder eine Beraterin nimmt gezielt die nächste Anfrage aus dem Backlog, wenn sie oder er Kapazität hat. → Das vermeidet Überlastung und fördert Qualität.</p>
@@ -57,7 +72,7 @@
     <img src="Pulla in action.png" alt="Pulla" class="image">
   </div>
 
-  <div class="section">
+  <div class="card">
     <div class="text">
       <strong>Visualisierung</strong>
       <p>Lean fördert Transparenz: Jeder im Team soll auf einen Blick sehen, wie der aktuelle Stand ist. Das Kanban-Board visualisiert den Prozess und die Arbeitslast für alle:</p>
@@ -70,5 +85,6 @@
     </div>
     <img src="Kanban in action.png" alt="Kanban" class="image">
   </div>
+
 </body>
 </html>
