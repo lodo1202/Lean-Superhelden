@@ -1,122 +1,127 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Typische Fehler bei der Kanban-Einführung</title>
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
-      background: #fff;
-      margin: 0;
+      background: #f7f7f7;
       padding: 40px;
       display: flex;
       justify-content: center;
     }
-    .content {
+    .content-wrapper {
       max-width: 1200px;
       width: 100%;
     }
-    .intro {
-      max-width: 1200px;
-      margin: 0 auto 40px auto;
-      padding: 0 20px;
-    }
-    .intro p {
-      font-size: 1.1em;
+    .intro-text {
+      margin-bottom: 40px;
+      font-size: 16px;
       line-height: 1.6;
       color: #333;
+      text-align: left;
     }
-    .grid {
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      justify-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
     }
     .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+      padding: 12px;
     }
     .card img {
       width: 100%;
-      height: auto;
-      display: block;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
     }
     .card-text {
-      padding: 16px;
+      padding: 12px 0 0;
     }
     .card-text strong {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+    .card-text p {
+      margin: 0;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="content">
-    <div class="intro">
+  <div class="content-wrapper">
+    <div class="intro-text">
       <p><strong>Kanban</strong> ist einer der wichtigsten Sidekicks der Lean-Superhelden – ein klares, starkes Werkzeug für mehr Übersicht, Struktur und Fokus.</p>
       <p>Doch damit Kanban seine volle Wirkung entfalten kann, musst du seine größten Feinde kennen.<br>
       Sie sehen harmlos aus, wirken manchmal sogar ganz logisch – aber genau das macht sie gefährlich.</p>
       <p>Schau genau hin, lern sie kennen – und sorge dafür, dass sie dir nicht in die Quere kommen. Denn hier kommen die acht häufigsten Fehler bei der Einführung von Kanban.</p>
     </div>
 
-    <div class="grid">
+    <div class="card-grid">
       <div class="card">
         <img src="Limitos.png" alt="Limitos">
         <div class="card-text">
-          <strong>Kein WIP-Limit setzen</strong>
+          <strong>Limitos – Kein WIP-Limit setzen</strong>
           <p>Ohne Begrenzung staut sich Arbeit → kein Flow entsteht.</p>
         </div>
       </div>
       <div class="card">
         <img src="Komplika.png" alt="Komplika">
         <div class="card-text">
-          <strong>Zu viele Spalten / zu kompliziertes Board</strong>
+          <strong>Komplika – Zu viele Spalten</strong>
           <p>Das Board wird unübersichtlich und verliert an Klarheit.</p>
         </div>
       </div>
       <div class="card">
         <img src="Vergssikus.png" alt="Vergssikus">
         <div class="card-text">
-          <strong>Board nicht aktuell halten</strong>
+          <strong>Vergssikus – Board nicht aktuell halten</strong>
           <p>Veraltete Karten → das Team verliert Vertrauen ins Board.</p>
         </div>
       </div>
       <div class="card">
         <img src="Unfertigo.png" alt="Unfertigo">
         <div class="card-text">
-          <strong>Keine klare Definition von "Done"</strong>
+          <strong>Unfertigo – Keine klare Definition von "Done"</strong>
           <p>Unklare Kriterien → Aufgaben bleiben unvollständig oder werden unterschiedlich interpretiert.</p>
         </div>
       </div>
       <div class="card">
         <img src="Fassado.png" alt="Fassado">
         <div class="card-text">
-          <strong>Board wird nicht vom Team genutzt</strong>
+          <strong>Fassado – Board wird nicht genutzt</strong>
           <p>Nur Management schaut drauf → das Team ist nicht eingebunden.</p>
         </div>
       </div>
       <div class="card">
         <img src="Commito.png" alt="Commito">
         <div class="card-text">
-          <strong>Kein gemeinsames Commitment im Team</strong>
+          <strong>Commito – Kein gemeinsames Commitment</strong>
           <p>Ohne Commitment pflegt niemand das Board → es wird nicht gelebt.</p>
         </div>
       </div>
       <div class="card">
         <img src="Stillstanda.png" alt="Stillstanda">
         <div class="card-text">
-          <strong>Keine Retrospektiven / keine Verbesserung</strong>
+          <strong>Stillstanda – Keine Retrospektiven</strong>
           <p>Board bleibt starr → keine Lernkurve, keine Prozessverbesserung.</p>
         </div>
       </div>
       <div class="card">
         <img src="Metrikulus.png" alt="Metrikulus">
         <div class="card-text">
-          <strong>Zu starker Fokus auf Reporting und Zahlen</strong>
+          <strong>Metrikulus – Zu starker Reporting-Fokus</strong>
           <p>Das Board wird zum Management-Tool → verliert Wert für das Team.</p>
         </div>
       </div>
