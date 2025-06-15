@@ -11,64 +11,53 @@
       display: flex;
       justify-content: center;
     }
-
     .content-wrapper {
-      max-width: 1100px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      align-items: center;
+      max-width: 700px;
     }
-
     .intro-text {
+      margin-bottom: 40px;
       font-size: 16px;
       line-height: 1.6;
       color: #333;
-      text-align: center;
-      max-width: 800px;
+      text-align: left;
     }
-
     .card-container {
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      width: 100%;
+      gap: 24px;
     }
-
     .card {
       background: white;
       border: 1px solid #ddd;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      gap: 40px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      gap: 20px;
     }
-
     .card img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
+      width: 180px;
+      border-radius: 8px;
+      flex-shrink: 0;
     }
-
     .card h3 {
-      margin: 0 0 10px 0;
-      font-size: 18px;
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      font-weight: bold;
     }
-
     .card p {
       margin: 0;
-      font-size: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
   <div class="content-wrapper">
     <div class="intro-text">
-      <p><strong>Aus den dunklen Ecken von Muda</strong> hat Chaostrax sieben weitere Verbündete entsendet – seine fiesen Helfer: <strong>die sieben Arten der Verschwendung</strong>.</p>
+      <p>Aus den dunklen Ecken von Muda hat Chaostrax sieben weitere Verbündete entsendet – seine fiesen Helfer: die sieben Arten der Verschwendung.</p>
       <p>Sie schleichen sich unbemerkt in deine Abläufe, bremsen den Fortschritt und füttern das Chaos.</p>
-      <p><strong>Doch wenn wir sie erkennen und reduzieren,</strong> schaffen wir mehr Wert für den Kunden – und stabilere, effizientere Prozesse.</p>
+      <p>Doch wenn wir sie erkennen und reduzieren, schaffen wir mehr Wert für den Kunden – und stabilere, effizientere Prozesse.</p>
     </div>
 
     <div class="card-container">
@@ -96,14 +85,14 @@
       <div class="card">
         <img src="Feinschliffo.png" alt="Feinschliffo">
         <div>
-          <h3>Feinschliffo (Überbearbeitung / Overprocessing)</h3>
+          <h3>Feinschliffo (Überbearbeitung)</h3>
           <p>Mehr Bearbeitung oder Qualität, als vom Kunden gefordert → unnötige Komplexität und Kosten.</p>
         </div>
       </div>
       <div class="card">
         <img src="Lagerix.png" alt="Lagerix">
         <div>
-          <h3>Lagerix (Bestände / Inventar)</h3>
+          <h3>Lagerix (Bestände)</h3>
           <p>Zu hohe Lagerbestände → Kapitalbindung, Veralterung, Platzbedarf.</p>
         </div>
       </div>
